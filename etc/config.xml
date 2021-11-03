@@ -1,0 +1,24 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright © Magmodules.eu. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <magmodules_messagebird>
+            <general>
+                <version>v1.0.0</version>
+            </general>
+            <communication>
+                <order_message>We successfully received your order with ID #{{order_id}} and awaiting your payment.</order_message>
+                <invoice_message>Your payment of {{currency}}{{amount}} for order #{{order_id}} is successfully received, thank you!</invoice_message>
+                <shipment_message>Great news! Your order is shipped to {{address}}, track your order here.</shipment_message>
+                <credit_message>An credit memo is created for {{order_id}}.</credit_message>
+                <out_of_stock_message>We are happy to share that the {{product_name}} is back in stock! Purchase it right here before it runs out again!</out_of_stock_message>
+                <price_changes_message>Check it out, the {{product_name}} has dropped in price. Click here to purchase this product before it goes back to the normal price.</price_changes_message>
+                <payment_reminder>Your payment of {{currency}}{{amount}} for order #{{order_id}} is not yet received, finish your payment through the following link to finish your order! Link: {{link}}</payment_reminder>
+            </communication>
+        </magmodules_messagebird>
+    </default>
+</config>

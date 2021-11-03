@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magmodules\MessageBird\Block\Adminhtml\System\Config\Field\Mollie;
+
+/**
+ * @see \Magmodules\MessageBird\Block\Adminhtml\System\Config\Field|Mollie
+ * @var Mollie $block
+ */
+?>
+<?php if (!$block->isMollieEnabled()): ?>
+<script>
+    require([
+        'jquery',
+        'prototype'
+    ], function (jQuery) {
+        jQuery('#row_magmodules_messagebird_communication_logging_heading').hide();
+        jQuery('#row_magmodules_messagebird_communication_payment_reminder').hide();
+        jQuery('#row_magmodules_messagebird_communication_payment_reminder_message').hide();
+    });
+</script>
+<?php endif; ?>

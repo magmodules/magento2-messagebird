@@ -1,0 +1,38 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="alert.urls">
+            <referenceBlock name="productalert.price" remove="true"/>
+            <referenceBlock name="productalert.stock" remove="true"/>
+            <block class="Magmodules\MessageBird\Block\ProductAlert\Price" name="messagebird.productalert.price" as="messagebird_productalert_price" template="Magmodules_MessageBird::product/view.phtml">
+                <action method="setSignupLabel">
+                    <argument translate="true" name="value" xsi:type="string">Notify me when the price drops</argument>
+                </action>
+                <action method="setType">
+                    <argument name="value" xsi:type="string">price</argument>
+                </action>
+                <action method="setHtmlClass">
+                    <argument name="value" xsi:type="string">price</argument>
+                </action>
+            </block>
+            <block class="Magmodules\MessageBird\Block\ProductAlert\Stock" name="messagebird.productalert.stock" as="messagebird_productalert_stock" template="Magmodules_MessageBird::product/view.phtml">
+                <action method="setSignupLabel">
+                    <argument translate="true" name="value" xsi:type="string">Notify me when this product is in stock</argument>
+                </action>
+                <action method="setType">
+                    <argument name="value" xsi:type="string">stock</argument>
+                </action>
+                <action method="setHtmlClass">
+                    <argument name="value" xsi:type="string">stock</argument>
+                </action>
+            </block>
+            <block class="Magento\Framework\View\Element\Template" name="messagebird.productalert.modal" template="Magmodules_MessageBird::product/modal.phtml"/>
+        </referenceContainer>
+    </body>
+</page>

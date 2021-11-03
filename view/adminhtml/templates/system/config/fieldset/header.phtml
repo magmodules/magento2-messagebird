@@ -1,0 +1,23 @@
+<?php
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ *
+ * @var $block Magmodules\MessageBird\Block\Adminhtml\MessageBird\Header
+ */
+?>
+<div class="mm-block-messagebird">
+    <a class="helpbutton" href="https://www.messagebird.com/" target="_blank"></a>
+    <p>
+        <strong><?= $block->escapeHtml(__('MessageBird for Magento')); ?></strong><br>
+        <?= $block->escapeHtml(__('Deliver updates about payments, orders, invoices, back-in-stock notifications,
+        or price-change updates directly to your customers using the MessageBird integration.')); ?>
+        <br>
+        <?= $block->escapeHtml(__('Use Mollie Payments to enable the option to sent payment reminders
+        to your customers around the world.')); ?>
+    </p>
+    <a class="mollie" href="https://github.com/mollie/magento2" target="_blank">Download the Mollie Payment Plugin</a>
+    <div class="header-developed">
+        <p>Developed in partnership with <a href="https://www.magmodules.eu/" target="_blank">Magmodules</a></p>
+    </div>
+</div>

@@ -1,0 +1,81 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright © Magmodules.eu. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+
+    <type name="Magmodules\MessageBird\Logger\Handler">
+        <arguments>
+            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+        </arguments>
+    </type>
+    <type name="Magmodules\MessageBird\Logger\ErrorLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">MessageBirdError</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Magmodules\MessageBird\Logger\Handler\Error</item>
+            </argument>
+        </arguments>
+    </type>
+    <type name="Magmodules\MessageBird\Logger\DebugLogger">
+        <arguments>
+            <argument name="name" xsi:type="string">MessageBirdDebug</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="system" xsi:type="object">Magmodules\MessageBird\Logger\Handler\Error</item>
+            </argument>
+        </arguments>
+    </type>
+
+    <!-- Data Providers Start -->
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="communication_log_listing_data_source"
+                      xsi:type="string">Magmodules\MessageBird\Model\CommunicationLog\ResourceModel\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+    <!-- Data Providers End -->
+
+    <!-- Communication Log Block Start -->
+    <preference for="Magmodules\MessageBird\Api\CommunicationLog\RepositoryInterface"
+                type="Magmodules\MessageBird\Model\CommunicationLog\Repository"/>
+    <preference for="Magmodules\MessageBird\Api\CommunicationLog\DataInterface"
+                type="Magmodules\MessageBird\Model\CommunicationLog\Data"/>
+    <preference for="Magmodules\MessageBird\Api\CommunicationLog\SearchResultsInterface"
+                type="Magento\Framework\Api\SearchResults"/>
+    <virtualType name="Magmodules\MessageBird\Model\CommunicationLog\ResourceModel\Grid\Collection"
+                 type="Magento\Framework\View\Element\UiComponent\DataProvider\SearchResult">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">messagebird_log</argument>
+            <argument name="resourceModel"
+                      xsi:type="string">Magmodules\MessageBird\Model\CommunicationLog\Collection
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <!-- Config Block Start -->
+    <preference for="Magmodules\MessageBird\Api\Config\RepositoryInterface"
+                type="Magmodules\MessageBird\Model\Config\Repository"/>
+    <!-- Config Block End -->
+
+    <!-- Log Block Start -->
+    <preference for="Magmodules\MessageBird\Api\Log\RepositoryInterface"
+                type="Magmodules\MessageBird\Model\Log\Repository"/>
+    <!-- Log Block End -->
+
+    <!-- Out of stock and product price notifications hook -->
+    <preference for="Magento\ProductAlert\Model\Email"
+                type="Magmodules\MessageBird\Model\Email"/>
+
+    <type name="Magento\Framework\Console\CommandList">
+        <arguments>
+            <argument name="commands" xsi:type="array">
+                <item name="SendNotifications" xsi:type="object">Magmodules\MessageBird\Console\Command\SendNotifications</item>
+            </argument>
+        </arguments>
+    </type>
+</config>

@@ -1,0 +1,154 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="communication" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+           showInStore="1">
+        <label>Communication</label>
+        <field id="communication_heading" translate="label" type="text" sortOrder="5" showInDefault="1"
+               showInWebsite="1" showInStore="1">
+            <label>Communication Triggers</label>
+            <comment>
+                <![CDATA[Enable the different triggers moments and set the message that is going to be sent to the customer.]]></comment>
+            <frontend_model>Magmodules\MessageBird\Block\Adminhtml\MessageBird\Heading</frontend_model>
+        </field>
+        <field id="order" translate="label" type="select" sortOrder="10" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Order</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magmodules_messagebird/communication/order</config_path>
+            <comment><![CDATA[Enable to sent the order confirmation through MessageBird to the customer.]]></comment>
+        </field>
+        <field id="order_message" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Message</label>
+            <config_path>magmodules_messagebird/communication/order_message</config_path>
+            <comment><![CDATA[Available variables: {{order_id}.]]></comment>
+            <depends>
+                <field id="order">1</field>
+            </depends>
+        </field>
+        <field id="invoice" translate="label" type="select" sortOrder="30" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Invoice</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magmodules_messagebird/communication/invoice</config_path>
+            <comment><![CDATA[Enable to sent the invoice notification through MessageBird to the customer.]]></comment>
+        </field>
+        <field id="invoice_message" translate="label" type="text" sortOrder="40" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Message</label>
+            <config_path>magmodules_messagebird/communication/invoice_message</config_path>
+            <comment><![CDATA[Available variables: {{currency}}, {{amount}}, {{order_id}}.]]></comment>
+            <depends>
+                <field id="invoice">1</field>
+            </depends>
+        </field>
+        <field id="shipment" translate="label" type="select" sortOrder="50" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Shipment</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magmodules_messagebird/communication/shipment</config_path>
+            <comment><![CDATA[Enable to sent the shipping notification through MessageBird to the customer.]]></comment>
+        </field>
+        <field id="shipment_message" translate="label" type="text" sortOrder="60" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Message</label>
+            <config_path>magmodules_messagebird/communication/shipment_message</config_path>
+            <comment><![CDATA[Available variables: {{address}}.]]></comment>
+            <depends>
+                <field id="shipment">1</field>
+            </depends>
+        </field>
+        <field id="credit" translate="label" type="select" sortOrder="70" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Credit</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magmodules_messagebird/communication/credit</config_path>
+            <comment>
+                <![CDATA[Enable to sent the credit-memo notification through MessageBird to the customer.]]></comment>
+        </field>
+        <field id="credit_message" translate="label" type="text" sortOrder="80" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Message</label>
+            <config_path>magmodules_messagebird/communication/credit_message</config_path>
+            <comment><![CDATA[Available variables: {{order_id}}.]]></comment>
+            <depends>
+                <field id="credit">1</field>
+            </depends>
+        </field>
+
+        <field id="out_of_stock" translate="label" type="select" sortOrder="90" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Product alerts for out-of-stock</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>catalog/productalert/allow_stock</config_path>
+            <comment>
+                <![CDATA[Enable this option to send the back in stock notification from Magento through MessageBird instead of through e-mail.]]></comment>
+        </field>
+        <field id="out_of_stock_message" translate="label" type="text" sortOrder="100" showInDefault="1"
+               showInWebsite="1"
+               showInStore="1">
+            <label>Message</label>
+            <config_path>magmodules_messagebird/communication/out_of_stock_message</config_path>
+            <comment><![CDATA[Available variables: {{product_name}}.]]></comment>
+            <depends>
+                <field id="out_of_stock">1</field>
+            </depends>
+        </field>
+
+        <field id="price_changes" translate="label" type="select" sortOrder="110" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Product alerts for price changes</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>catalog/productalert/allow_price</config_path>
+            <comment>
+                <![CDATA[Enable this option to send the product price change notification from Magento through MessageBird instead of through e-mail.]]></comment>
+        </field>
+        <field id="price_changes_message" translate="label" type="text" sortOrder="120" showInDefault="1"
+               showInWebsite="1"
+               showInStore="1">
+            <label>Message</label>
+            <config_path>magmodules_messagebird/communication/price_changes_message</config_path>
+            <comment><![CDATA[Available variables: {{product_name}}.]]></comment>
+            <depends>
+                <field id="price_changes">1</field>
+            </depends>
+        </field>
+
+        <field id="mollie_heading" translate="label" type="text" sortOrder="130" showInDefault="1"
+               showInWebsite="1" showInStore="1">
+            <label>Payment Reminder Messages</label>
+            <comment><![CDATA[<p>In collaboration with Mollie payments, we have made it possible to notify customers about unfinished payments using an e-mail. With the MessageBird integration, we can share this payment link directly with them through a text message so the customers can directly revive their order.
+<br><br><strong>Please note that;</strong><br />- This feature is only available when the <a href="https://github.com/mollie/magento2" target="_blank">Mollie Payments plugin</a> is installed and enabled;<br />- The message is only sent if the customer didn't finish their order in a certain time period.</p>]]></comment>
+            <frontend_model>Magmodules\MessageBird\Block\Adminhtml\MessageBird\Heading</frontend_model>
+        </field>
+
+        <field id="payment_reminder" translate="label" type="select" sortOrder="140" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Mollie: Payment Reminder</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magmodules_messagebird/communication/payment_reminder</config_path>
+        </field>
+        <field id="payment_reminder_message" translate="label" type="text" sortOrder="150" showInDefault="1"
+               showInWebsite="1"
+               showInStore="1">
+            <label>Message</label>
+            <config_path>magmodules_messagebird/communication/payment_reminder_message</config_path>
+            <comment><![CDATA[Available variables: {{currency}}, {{amount}}, {{order_id}}, {{link}}.]]></comment>
+            <depends>
+                <field id="payment_reminder">1</field>
+            </depends>
+        </field>
+        <field id="mollie" translate="label" type="button" sortOrder="1000" showInDefault="1"
+               showInWebsite="0" showInStore="1">
+            <label/>
+            <frontend_model>Magmodules\MessageBird\Block\Adminhtml\System\Config\Field\Mollie</frontend_model>
+        </field>
+    </group>
+</include>

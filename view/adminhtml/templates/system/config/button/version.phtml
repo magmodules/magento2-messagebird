@@ -1,0 +1,25 @@
+<?php
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+
+use Magmodules\MessageBird\Block\Adminhtml\System\Config\Button\VersionCheck;
+
+/**
+ * @see \Magmodules\MessageBird\Block\Adminhtml\System\Config\Button\VersionCheck
+ * @var VersionCheck $block
+ */
+?>
+<div class="magmodules-messagebird-result_version-wrapper"
+     data-magmodules-messagebird-endpoind-url="<?= $block->escapeUrl($block->getVersionCheckUrl()) ?>">
+    <span><?= $block->escapeHtml($block->getVersion()); ?></span>
+    <?= $block->getButtonHtml() ?>
+    <div id="magmodules-messagebird-result_version"></div>
+    <div id="magmodules-messagebird-result_changelog-modal"
+         data-magmodules-messagebird-endpoind-url="<?= $block->escapeUrl($block->getChangeLogUrl()) ?>">
+        <div id="magmodules-messagebird-result_changelog">
+            <ul class="result"></ul>
+        </div>
+    </div>
+</div>

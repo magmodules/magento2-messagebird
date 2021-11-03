@@ -1,0 +1,60 @@
+<?xml version="1.0" ?>
+<!--
+  ~ Copyright © Magmodules.eu. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<schema xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Setup/Declaration/Schema/etc/schema.xsd">
+    <!-- Declaration Schema of MessageBird Communication Log Table -->
+    <table name="messagebird_log" engine="innodb" resource="default" comment="MessageBird Log Table">
+        <column name="entity_id"
+                xsi:type="int"
+                padding="10"
+                identity="true"
+                nullable="false"
+                unsigned="true"
+                comment="Entity ID"/>
+        <column name="increment_id"
+                xsi:type="varchar"
+                length="255"
+                nullable="true"
+                comment="Increment ID"/>
+        <column name="firstname"
+                xsi:type="varchar"
+                length="255"
+                nullable="true"
+                comment="Firstname"/>
+        <column name="lastname"
+                xsi:type="varchar"
+                length="255"
+                nullable="true"
+                comment="Lastname"/>
+        <column name="email"
+                xsi:type="varchar"
+                length="255"
+                nullable="true"
+                comment="Email"/>
+        <column name="status"
+                xsi:type="smallint"
+                padding="2"
+                identity="false"
+                nullable="false"
+                unsigned="true"
+                comment="Increment ID"/>
+        <column name="type"
+                xsi:type="smallint"
+                padding="2"
+                identity="false"
+                nullable="false"
+                unsigned="true"
+                comment="Communication type"/>
+        <column name="created_at"
+                xsi:type="timestamp"
+                on_update="false"
+                default="CURRENT_TIMESTAMP"
+                comment="Created At"/>
+        <constraint referenceId="PRIMARY" xsi:type="primary">
+            <column name="entity_id"/>
+        </constraint>
+    </table>
+</schema>

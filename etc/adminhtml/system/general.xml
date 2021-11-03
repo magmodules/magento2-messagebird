@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="general" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+           showInStore="1">
+        <label>General</label>
+        <field id="version_button" translate="label" type="button" sortOrder="1" showInDefault="1"
+               showInWebsite="1" showInStore="1">
+            <label>Version</label>
+            <frontend_model>Magmodules\MessageBird\Block\Adminhtml\System\Config\Button\VersionCheck</frontend_model>
+        </field>
+        <field id="enable" translate="label" type="select" sortOrder="2" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Enabled</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magmodules_messagebird/general/enable</config_path>
+        </field>
+        <field id="credentials_heading" translate="label" type="text" sortOrder="10" showInDefault="1"
+               showInWebsite="1" showInStore="1">
+            <label>Credentials</label>
+            <comment><![CDATA[You can obtain the Live and Test API Key directly from your MessageBird Dashboard through <a href="https://dashboard.messagebird.com/developers/access" target="_blank">this</a> link. Please note that
+sending messages with Test Mode disabled uses your available credits.]]></comment>
+            <frontend_model>Magmodules\MessageBird\Block\Adminhtml\MessageBird\Heading</frontend_model>
+        </field>
+        <field id="test_mode" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Test Mode</label>
+            <source_model>Magento\Config\Model\Config\Source\Yesno</source_model>
+            <config_path>magmodules_messagebird/general/test_mode</config_path>
+        </field>
+        <field id="api_key_live" translate="label" type="obscure" sortOrder="12" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>API Key - Live</label>
+            <config_path>magmodules_messagebird/general/api_key_live</config_path>
+            <comment model="Magmodules\MessageBird\Model\Adminhtml\Comment\EncryptedHint"/>
+            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+        </field>
+        <field id="api_key_test" translate="label" type="obscure" sortOrder="13" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>API Key - Test</label>
+            <config_path>magmodules_messagebird/general/api_key_test</config_path>
+            <comment model="Magmodules\MessageBird\Model\Adminhtml\Comment\EncryptedHint"/>
+            <backend_model>Magento\Config\Model\Config\Backend\Encrypted</backend_model>
+        </field>
+        <field id="sendername" translate="label" type="text" sortOrder="14" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Sender Name</label>
+            <config_path>magmodules_messagebird/general/sendername</config_path>
+        </field>
+        <field id="originator" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Phone Number</label>
+            <config_path>magmodules_messagebird/general/originator</config_path>
+        </field>
+        <field id="button" translate="label" type="button" sortOrder="20" showInDefault="1"
+               showInWebsite="0" showInStore="1">
+            <label/>
+            <frontend_model>Magmodules\MessageBird\Block\Adminhtml\System\Config\Button\Credentials</frontend_model>
+        </field>
+    </group>
+</include>

@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+<!--
+/**
+ * Copyright © Magmodules.eu. All rights reserved.
+ * See COPYING.txt for license details.
+ */
+-->
+<include xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Config:etc/system_include.xsd">
+    <group id="restrictions" translate="label" type="text" sortOrder="20" showInDefault="1" showInWebsite="1"
+           showInStore="1">
+        <label>Restrictions and Statusses</label>
+        <field id="restrictions_heading" translate="label" type="text" sortOrder="5" showInDefault="1"
+               showInWebsite="1" showInStore="1">
+            <label>Triggerpoints</label>
+            <comment>
+                <![CDATA[Configure the desired statuses and customer group for where you want to activate the link and use MessageBird. In this way, you avoid incorrect communication moments and unnecessary use of MessageBird credits.]]></comment>
+            <frontend_model>Magmodules\MessageBird\Block\Adminhtml\MessageBird\Heading</frontend_model>
+        </field>
+        <field id="general" translate="label" type="multiselect" sortOrder="10" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>General Communication</label>
+            <source_model>Magento\Customer\Model\Customer\Source\Group</source_model>
+            <config_path>magmodules_messagebird/restrictions/general</config_path>
+        </field>
+        <field id="order" translate="label" type="multiselect" sortOrder="20" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Order</label>
+            <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+            <config_path>magmodules_messagebird/restrictions/order</config_path>
+        </field>
+        <field id="invoice" translate="label" type="multiselect" sortOrder="30" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Invoice</label>
+            <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+            <config_path>magmodules_messagebird/restrictions/invoice</config_path>
+        </field>
+        <field id="creditmemo" translate="label" type="multiselect" sortOrder="40" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Credit Memo</label>
+            <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+            <config_path>magmodules_messagebird/restrictions/creditmemo</config_path>
+        </field>
+        <field id="shipment" translate="label" type="multiselect" sortOrder="50" showInDefault="1" showInWebsite="1"
+               showInStore="1">
+            <label>Shipment</label>
+            <source_model>Magento\Sales\Model\Config\Source\Order\Status</source_model>
+            <config_path>magmodules_messagebird/restrictions/shipment</config_path>
+        </field>
+    </group>
+</include>

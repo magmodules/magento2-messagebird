@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<!--
+  ~ Copyright © Magmodules.eu. All rights reserved.
+  ~ See COPYING.txt for license details.
+  -->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:Event/etc/events.xsd">
+    <event name="sales_order_place_after">
+        <observer name="messagebird_order" instance="Magmodules\MessageBird\Observer\Order"/>
+    </event>
+    <event name="sales_order_invoice_save_after">
+        <observer name="messagebird_invoice" instance="Magmodules\MessageBird\Observer\Invoice"/>
+    </event>
+    <event name="sales_order_shipment_save_after">
+        <observer name="messagebird_shipping"
+                  instance="Magmodules\MessageBird\Observer\Shipment"/>
+    </event>
+    <event name="sales_order_creditmemo_save_after">
+        <observer name="messagebird_creditmemo"
+                  instance="Magmodules\MessageBird\Observer\Creditmemo"/>
+    </event>
+    <event name="mollie_second_change_email_before_send">
+        <observer name="messagebird_payment_reminder"
+                  instance="Magmodules\MessageBird\Observer\PaymentReminder"/>
+    </event>
+</config>
