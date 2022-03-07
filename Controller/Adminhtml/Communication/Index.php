@@ -24,7 +24,7 @@ class Index extends Action
      *
      * @see _isAllowed()
      */
-    const ADMIN_RESOURCE = 'Magmodules_MessageBird::communication_log_listing';
+    public const ADMIN_RESOURCE = 'Magmodules_MessageBird::communication_log_listing';
 
     /**
      * @var PageFactory

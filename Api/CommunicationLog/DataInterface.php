@@ -18,42 +18,42 @@ interface DataInterface extends ExtensibleDataInterface
     /**
      * ID of entity
      */
-    const ENTITY_ID = 'entity_id';
+    public const ENTITY_ID = 'entity_id';
 
     /**
      * Increment ID of related entity
      */
-    const INCREMENT_ID = 'increment_id';
+    public const INCREMENT_ID = 'increment_id';
 
     /**
      * Customer's firstname
      */
-    const FIRSTNAME = 'firstname';
+    public const FIRSTNAME = 'firstname';
 
     /**
      * Customer's lastname
      */
-    const LASTNAME = 'lastname';
+    public const LASTNAME = 'lastname';
 
     /**
      * Customer's email
      */
-    const EMAIL = 'email';
+    public const EMAIL = 'email';
 
     /**
      * Entity's status
      */
-    const STATUS = 'status';
+    public const STATUS = 'status';
 
     /**
      * Type of communication event
      */
-    const TYPE = 'type';
+    public const TYPE = 'type';
 
     /**
      * Entity's creation time
      */
-    const CREATED_AT = 'created_at';
+    public const CREATED_AT = 'created_at';
 
     /**
      * Getter for entity_id

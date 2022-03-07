@@ -22,7 +22,7 @@ use Magmodules\MessageBird\Service\Api\Adapter;
  */
 class Shipment implements ObserverInterface
 {
-    const ERROR = 'Processing of shipment ID %1 for order %2 failed: %3';
+    public const ERROR = 'Processing of shipment ID %1 for order %2 failed: %3';
 
     /**
      * @var Adapter

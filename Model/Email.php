@@ -28,7 +28,7 @@ use Magmodules\MessageBird\Service\Api\Adapter;
  */
 class Email extends MagentoAlertEmail
 {
-    const ERROR = 'Product %1 notification failed: %2';
+    public const ERROR = 'Product %1 notification failed: %2';
 
     /**
      * @var PrepareProductAlertData

@@ -20,7 +20,7 @@ class Type implements OptionSourceInterface
     /**
      * Type const
      */
-    const TYPES =
+    public const TYPES =
         [
             'Creditmemo',
             'Invoice',

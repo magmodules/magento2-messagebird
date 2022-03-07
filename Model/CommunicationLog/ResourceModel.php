@@ -18,12 +18,12 @@ class ResourceModel extends AbstractDb
     /**
      * Table name
      */
-    const ENTITY_TABLE = 'messagebird_log';
+    public const ENTITY_TABLE = 'messagebird_log';
 
     /**
      * Primary field
      */
-    const PRIMARY = 'entity_id';
+    public const PRIMARY = 'entity_id';
 
     /**
      * @inheritDoc

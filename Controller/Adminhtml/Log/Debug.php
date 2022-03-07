@@ -29,7 +29,7 @@ class Debug extends Action
     /**
      * Debug log file path pattern
      */
-    const DEBUG_LOG_FILE = '%s/log/messagebird/debug.log';
+    public const DEBUG_LOG_FILE = '%s/log/messagebird/debug.log';
 
     /**
      * @var JsonFactory
