@@ -14,44 +14,44 @@ namespace Magmodules\MessageBird\Api\Config;
 interface RepositoryInterface
 {
 
-    const EXTENSION_CODE = 'Magmodules_MessageBird';
-    const XML_PATH_EXTENSION_VERSION = 'magmodules_messagebird/general/version';
-    const ENABLED = 'magmodules_messagebird/general/enable';
-    const LIVE_KEY = 'magmodules_messagebird/general/api_key_live';
-    const TEST_KEY = 'magmodules_messagebird/general/api_key_test';
-    const ORIGINATOR = 'magmodules_messagebird/general/originator';
-    const TEST_MODE = 'magmodules_messagebird/general/test_mode';
-    const SENDER = 'magmodules_messagebird/general/sendername';
+    public const EXTENSION_CODE = 'Magmodules_MessageBird';
+    public const XML_PATH_EXTENSION_VERSION = 'magmodules_messagebird/general/version';
+    public const ENABLED = 'magmodules_messagebird/general/enable';
+    public const LIVE_KEY = 'magmodules_messagebird/general/api_key_live';
+    public const TEST_KEY = 'magmodules_messagebird/general/api_key_test';
+    public const ORIGINATOR = 'magmodules_messagebird/general/originator';
+    public const TEST_MODE = 'magmodules_messagebird/general/test_mode';
+    public const SENDER = 'magmodules_messagebird/general/sendername';
 
-    const ORDER = 'magmodules_messagebird/communication/order';
-    const ORDER_MESSAGE = 'magmodules_messagebird/communication/order_message';
+    public const ORDER = 'magmodules_messagebird/communication/order';
+    public const ORDER_MESSAGE = 'magmodules_messagebird/communication/order_message';
 
-    const INVOICE = 'magmodules_messagebird/communication/invoice';
-    const INVOICE_MESSAGE = 'magmodules_messagebird/communication/invoice_message';
+    public const INVOICE = 'magmodules_messagebird/communication/invoice';
+    public const INVOICE_MESSAGE = 'magmodules_messagebird/communication/invoice_message';
 
-    const SHIPPING = 'magmodules_messagebird/communication/shipment';
-    const SHIPPING_MESSAGE = 'magmodules_messagebird/communication/shipment_message';
+    public const SHIPPING = 'magmodules_messagebird/communication/shipment';
+    public const SHIPPING_MESSAGE = 'magmodules_messagebird/communication/shipment_message';
 
-    const CREDIT = 'magmodules_messagebird/communication/credit';
-    const CREDIT_MESSAGE = 'magmodules_messagebird/communication/credit_message';
+    public const CREDIT = 'magmodules_messagebird/communication/credit';
+    public const CREDIT_MESSAGE = 'magmodules_messagebird/communication/credit_message';
 
-    const OUT_OF_STOCK = 'catalog/productalert/allow_stock';
-    const OUT_OF_STOCK_MESSAGE = 'magmodules_messagebird/communication/out_of_stock_message';
+    public const OUT_OF_STOCK = 'catalog/productalert/allow_stock';
+    public const OUT_OF_STOCK_MESSAGE = 'magmodules_messagebird/communication/out_of_stock_message';
 
-    const PRICE_CHANGES = 'catalog/productalert/allow_price';
-    const PRICE_CHANGES_MESSAGE = 'magmodules_messagebird/communication/price_changes_message';
+    public const PRICE_CHANGES = 'catalog/productalert/allow_price';
+    public const PRICE_CHANGES_MESSAGE = 'magmodules_messagebird/communication/price_changes_message';
 
-    const PAYMENT_REMINDER = 'magmodules_messagebird/communication/payment_reminder';
-    const PAYMENT_REMINDER_MESSAGE = 'magmodules_messagebird/communication/payment_reminder_message';
-    const MOLLIE_STATUS = 'payment/mollie_general/enabled';
+    public const PAYMENT_REMINDER = 'magmodules_messagebird/communication/payment_reminder';
+    public const PAYMENT_REMINDER_MESSAGE = 'magmodules_messagebird/communication/payment_reminder_message';
+    public const MOLLIE_STATUS = 'payment/mollie_general/enabled';
 
-    const RESTRICTIONS_GENERAL = 'magmodules_messagebird/restrictions/general';
-    const RESTRICTIONS_ORDER = 'magmodules_messagebird/restrictions/order';
-    const RESTRICTIONS_INVOICE = 'magmodules_messagebird/restrictions/invoice';
-    const RESTRICTIONS_CREDITMEMO = 'magmodules_messagebird/restrictions/creditmemo';
-    const RESTRICTIONS_SHIPMENT = 'magmodules_messagebird/restrictions/shipment';
+    public const RESTRICTIONS_GENERAL = 'magmodules_messagebird/restrictions/general';
+    public const RESTRICTIONS_ORDER = 'magmodules_messagebird/restrictions/order';
+    public const RESTRICTIONS_INVOICE = 'magmodules_messagebird/restrictions/invoice';
+    public const RESTRICTIONS_CREDITMEMO = 'magmodules_messagebird/restrictions/creditmemo';
+    public const RESTRICTIONS_SHIPMENT = 'magmodules_messagebird/restrictions/shipment';
 
-    const DEBUG = 'magmodules_messagebird/debug/debug';
+    public const DEBUG = 'magmodules_messagebird/debug/debug';
 
     /**
      * Get extension version

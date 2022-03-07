@@ -26,7 +26,7 @@ class Adapter
     /**
      * Error key value pair
      */
-    const ERRORS = [
+    public const ERRORS = [
         'incorrect access_key' => 'Incorrect access key',
         'no (correct) recipients found' => 'Originator is invalid',
         'phone number has unknown format' => 'Phone number has unknown format: ',
@@ -36,7 +36,7 @@ class Adapter
     /**
      * Country path
      */
-    const COUNTRY_CODE_PATH = 'general/store_information/country_id';
+    public const COUNTRY_CODE_PATH = 'general/store_information/country_id';
 
     /**
      * @var Message

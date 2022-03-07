@@ -20,7 +20,7 @@ class Status implements OptionSourceInterface
     /**
      * Status const
      */
-    const STATUSES = [
+    public const STATUSES = [
         'Fail',
         'Success'
     ];

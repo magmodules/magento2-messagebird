@@ -22,7 +22,7 @@ use Magmodules\MessageBird\Service\Api\Adapter;
  */
 class PaymentReminder implements ObserverInterface
 {
-    const ERROR = 'Processing of payment reminding for order ID %1 failed: %2';
+    public const ERROR = 'Processing of payment reminding for order ID %1 failed: %2';
 
     /**
      * @var Adapter
