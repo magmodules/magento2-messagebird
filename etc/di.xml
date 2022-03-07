@@ -70,12 +70,4 @@
     <!-- Out of stock and product price notifications hook -->
     <preference for="Magento\ProductAlert\Model\Email"
                 type="Magmodules\MessageBird\Model\Email"/>
-
-    <type name="Magento\Framework\Console\CommandList">
-        <arguments>
-            <argument name="commands" xsi:type="array">
-                <item name="SendNotifications" xsi:type="object">Magmodules\MessageBird\Console\Command\SendNotifications</item>
-            </argument>
-        </arguments>
-    </type>
 </config>
