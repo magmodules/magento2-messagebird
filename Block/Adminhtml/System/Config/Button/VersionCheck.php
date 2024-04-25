@@ -53,7 +53,7 @@ class VersionCheck extends Field
     /**
      * @return string
      */
-    public function getVersion()
+    public function getVersion(): string
     {
         return $this->configRepository->getExtensionVersion();
     }
@@ -63,7 +63,7 @@ class VersionCheck extends Field
      *
      * @return string
      */
-    public function render(AbstractElement $element)
+    public function render(AbstractElement $element): string
     {
         $element->unsScope()->unsCanUseWebsiteValue()->unsCanUseDefaultValue();
         return parent::render($element);
@@ -74,7 +74,7 @@ class VersionCheck extends Field
      *
      * @return string
      */
-    public function _getElementHtml(AbstractElement $element)
+    public function _getElementHtml(AbstractElement $element): string
     {
         return $this->_toHtml();
     }
@@ -82,32 +82,33 @@ class VersionCheck extends Field
     /**
      * @return string
      */
-    public function getVersionCheckUrl()
+    public function getVersionCheckUrl(): string
     {
-        return $this->getUrl('messagebird/versioncheck/index');
+        return $this->getUrl('messagebird/versionCheck/index');
     }
 
     /**
      * @return string
      */
-    public function getChangeLogUrl()
+    public function getChangeLogUrl(): string
     {
-        return $this->getUrl('messagebird/versioncheck/changelog');
+        return $this->getUrl('messagebird/versionCheck/changelog');
     }
 
     /**
-     * @return mixed
+     * @return string
      */
-    public function getButtonHtml()
+    public function getButtonHtml(): string
     {
-        $buttonData = ['id' => 'magmodules-messagebird-button_version', 'label' => __('Check for latest versions')];
         try {
-            $button = $this->getLayout()->createBlock(
-                Button::class
-            )->setData($buttonData);
-            return $button->toHtml();
+            return $this->getLayout()
+                ->createBlock(Button::class)
+                ->setData([
+                    'id' => 'mm-ui-button_version',
+                    'label' => __('Check for latest versions')
+                ])->toHtml();
         } catch (Exception $e) {
-            return false;
+            return '';
         }
     }
 }

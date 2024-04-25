@@ -14,7 +14,6 @@ use Magento\Store\Api\Data\StoreInterface;
 use Magento\Store\Model\ScopeInterface;
 use Magento\Store\Model\StoreManagerInterface as StoreManager;
 use Magmodules\MessageBird\Api\Config\RepositoryInterface;
-use Magmodules\MessageBird\Api\Log\RepositoryInterface as LogRepository;
 
 /**
  * MessageBird Connect config repository class
@@ -33,11 +32,6 @@ class Repository implements RepositoryInterface
     private $storeManager;
 
     /**
-     * @var LogRepository
-     */
-    private $logRepository;
-
-    /**
      * @var ProductMetadataInterface
      */
     private $metadata;
@@ -52,19 +46,16 @@ class Repository implements RepositoryInterface
      *
      * @param ScopeConfig $scopeConfig
      * @param StoreManager $storeManager
-     * @param LogRepository $logRepository
      * @param ProductMetadataInterface $metadata
      */
     public function __construct(
         ScopeConfig $scopeConfig,
         StoreManager $storeManager,
-        LogRepository $logRepository,
         ProductMetadataInterface $metadata,
         EncryptorInterface $encryptor
     ) {
         $this->storeManager = $storeManager;
         $this->scopeConfig = $scopeConfig;
-        $this->logRepository = $logRepository;
         $this->metadata = $metadata;
         $this->encryptor = $encryptor;
     }
@@ -102,7 +93,6 @@ class Repository implements RepositoryInterface
         try {
             return $this->storeManager->getStore();
         } catch (Exception $e) {
-            $this->logRepository->addErrorLog('Store error', $e->getMessage());
             if ($store = $this->storeManager->getDefaultStoreView()) {
                 return $store;
             }

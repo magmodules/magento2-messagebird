@@ -91,9 +91,10 @@ class Price extends View
             $template = '';
         } elseif (!$this->session->isLoggedIn() || !$this->configRepository->isEnabledForPriceChanges($storeId)) {
             $template = 'Magento_ProductAlert::product/view.phtml';
-            $this->setSignupUrl($this->_helper->getSaveUrl('price'));
+            $this->setData('signup_url', $this->_helper->getSaveUrl('price'));
         } else {
-            $this->setSignupUrl(
+            $this->setData(
+                'signup_url',
                 $this->getUrl(
                     'messagebird/addalert/price',
                     [

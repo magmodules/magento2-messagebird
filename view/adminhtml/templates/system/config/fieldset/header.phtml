@@ -5,19 +5,63 @@
  *
  * @var $block Magmodules\MessageBird\Block\Adminhtml\MessageBird\Header
  */
+
+$logoMollie = $block->getViewFileUrl('Magmodules_MessageBird/images/logo-mollie.svg');
 ?>
-<div class="mm-block-messagebird">
-    <a class="helpbutton" href="https://www.messagebird.com/" target="_blank"></a>
-    <p>
-        <strong><?= $block->escapeHtml(__('MessageBird for Magento')); ?></strong><br>
-        <?= $block->escapeHtml(__('Deliver updates about payments, orders, invoices, back-in-stock notifications,
-        or price-change updates directly to your customers using the MessageBird integration.')); ?>
-        <br>
-        <?= $block->escapeHtml(__('Use Mollie Payments to enable the option to sent payment reminders
-        to your customers around the world.')); ?>
-    </p>
-    <a class="mollie" href="https://github.com/mollie/magento2" target="_blank">Download the Mollie Payment Plugin</a>
-    <div class="header-developed">
-        <p>Developed in partnership with <a href="https://www.magmodules.eu/" target="_blank">Magmodules</a></p>
+
+<div class="mm-ui-header">
+    <div class="mm-ui-header-up-box">
+        <a href="https://www.messagebird.com/" target="_blank">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164.5 138" xml:space="preserve" fill="currentColor">
+                <path d="M147.6 24.5c-6.6 0-12.5 3.3-16.1 8.3l-24.3 34.1c-.9 1.3-2.4 2.1-4 2.1-2.7 0-4.9-2.2-4.9-4.9
+                0-1 .3-2 .8-2.7l20.5-30.7c2.1-3.1 3.3-6.9 3.3-11 0-10.9-8.8-19.7-19.7-19.7H0v19.7h88.4c0
+                5.4-4.4 9.9-9.9 9.9H0c0 7 1.5 13.7 4.1 19.7h64.5c0 5.4-4.4 9.9-9.9 9.9H9.8c9 12 23.3 19.7
+                39.5 19.7h24.3c2.7 0 4.9 2.2 4.9 4.9s-2.2 4.9-4.9 4.9H49.3l-33 49.3H76c27.3 0 50.5-17.8
+                58.6-42.4l11.1-33.7c3.6-10.9 10.2-20.5 18.8-27.8-3.4-5.7-9.7-9.6-16.9-9.6zm0 13.6c-2
+                0-3.7-1.7-3.7-3.7s1.7-3.7 3.7-3.7 3.7 1.7 3.7 3.7-1.6 3.7-3.7 3.7z" />
+            </svg>
+        </a>
+
+        <div>
+            <h2 class="mm-ui-header-title">
+                <?= $block->escapeHtml(__('MessageBird for Magento')); ?>
+            </h2>
+            <p>
+                <?= $block->escapeHtml(
+                    __('Deliver updates about payments, orders, invoices, back-in-stock notifications, 
+                        ' . 'or price-change updates directly to your customers using the MessageBird integration.')
+                ); ?>
+                <span><?= $block->escapeHtml(__('Use Mollie Payments')); ?></span>
+                <?= $block->escapeHtml(
+                    __('to enable the option to sent payment reminders to your customers around the world.')
+                ); ?>
+            </p>
+        </div>
+    </div>
+
+    <div class="mm-ui-header-down-box">
+        <div class="mollie">
+            <img src="<?= $block->escapeHtml($logoMollie); ?>" alt="MessageBird logo" width="100" height="28" />
+            <span>
+                <a href="https://github.com/mollie/magento2" target="_blank">
+                    <?= $block->escapeHtml(__('Download')); ?>
+                </a>
+                <?= $block->escapeHtml(__('the Mollie Payment Plugin')); ?>
+            </span>
+        </div>
+
+        <div class="magmodules">
+            <?= $block->escapeHtml(__('Developed in partnership with')); ?>
+            <a href="https://www.magmodules.eu/" target="_blank">Magmodules</a>
+        </div>
     </div>
 </div>
+
+<script type="text/x-magento-init">
+    {
+        "*": {
+            "Magmodules_MessageBird/js/button-functions": {},
+            "Magmodules_MessageBird/js/show-more": {}
+        }
+    }
+</script>

@@ -88,9 +88,10 @@ class Stock extends View
             $template = '';
         } elseif (!$this->session->isLoggedIn() || !$this->configRepository->isEnabledForOutOfStock($storeId)) {
             $template = 'Magento_ProductAlert::product/view.phtml';
-            $this->setSignupUrl($this->_helper->getSaveUrl('stock'));
+            $this->setData('signup_url', $this->_helper->getSaveUrl('stock'));
         } else {
-            $this->setSignupUrl(
+            $this->setData(
+                'signup_url',
                 $this->getUrl(
                     'messagebird/addalert/stock',
                     [
