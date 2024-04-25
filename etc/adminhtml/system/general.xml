@@ -26,7 +26,7 @@
             <label>Credentials</label>
             <comment><![CDATA[You can obtain the Live and Test API Key directly from your MessageBird Dashboard through <a href="https://dashboard.messagebird.com/developers/access" target="_blank">this</a> link. Please note that
 sending messages with Test Mode disabled uses your available credits.]]></comment>
-            <frontend_model>Magmodules\MessageBird\Block\Adminhtml\MessageBird\Heading</frontend_model>
+            <frontend_model>Magmodules\MessageBird\Block\Adminhtml\Design\Heading</frontend_model>
         </field>
         <field id="test_mode" translate="label" type="select" sortOrder="11" showInDefault="1" showInWebsite="1"
                showInStore="1">

@@ -12,7 +12,6 @@ use Magento\Framework\App\ResponseInterface;
 use Magento\Framework\Controller\Result\Json;
 use Magento\Framework\Controller\Result\JsonFactory;
 use Magento\Framework\Controller\ResultInterface;
-use Magento\Framework\Exception\FileSystemException;
 use Magento\Framework\Filesystem\Driver\File;
 use Magento\Framework\Serialize\Serializer\Json as JsonSerializer;
 use Magmodules\MessageBird\Api\Config\RepositoryInterface as ConfigRepository;
@@ -69,21 +68,31 @@ class Index extends Action
     }
 
     /**
-     * @return ResponseInterface|Json|ResultInterface
+     * @return Json
      */
-    public function execute()
+    public function execute(): Json
     {
         $resultJson = $this->resultJsonFactory->create();
         $result = $this->getVersions();
         $current = $latest = preg_replace('/^v/', '', $this->configRepository->getExtensionVersion());
+        $changeLog = [];
         if ($result) {
             $data = $this->json->unserialize($result);
             $versions = array_keys($data);
             $latest = preg_replace('/^v/', '', reset($versions));
+            foreach ($data as $version => $changes) {
+                if (version_compare(preg_replace('/^v/', '', $version), $current) == 0) {
+                    break;
+                }
+                $changeLog[] = [
+                    $version => $changes['changelog']
+                ];
+            }
         }
         $data = [
-            'current_verion' => 'v' . $current,
-            'last_version' => 'v' . $latest
+            'current_version' => 'v' . $current,
+            'last_version' => 'v' . $latest,
+            'changelog' => $changeLog,
         ];
         return $resultJson->setData(['result' => $data]);
     }
@@ -95,7 +104,7 @@ class Index extends Action
     {
         try {
             return $this->file->fileGetContents(
-                sprintf('http://version.magmodules.eu/%s.json', ConfigRepository::EXTENSION_CODE)
+                sprintf('https://version.magmodules.eu/%s.json', ConfigRepository::EXTENSION_CODE)
             );
         } catch (\Exception $exception) {
             return '';

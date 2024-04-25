@@ -1,50 +1,58 @@
 require([
-    'jquery'
-], function ($) {
+    'jquery',
+    'mage/translate',
+    '!domReady'
+], function ($, $t) {
 
-    var $mmHeadingComment = $('.magmodules-messagebird-heading-comment');
+    let comment = $('.mm-ui-heading-comment'),
+        heading = comment.parent().find('.mm-ui-heading-block'),
+        showMoreLessBtnHtml = `
+            <div class="mm-ui-show-more-actions hidden">
+                <a href="javascript:void(0)" class="mm-ui-show-btn-more">
+                    ${$t('More')}
+                </a>
+            </div>`;
 
-    if($mmHeadingComment.length) {
+    // Additional check if tab was closed during initialization
+    const parent = document.querySelector('form[action*="magmodules_messagebird"]');
+    const observer = new MutationObserver((mutation) => {
+        for (let i = 0; i < mutation.length; i++) {
+            if (mutation[i].target.classList.contains('section-config')) {
+                isShowMore();
+            }
+        }
+    });
 
-        $(window).load(function() {
+    observer.observe(parent, { 
+        subtree: true,
+        attributes: true,
+        attributeFilter: ['class'],
+    });
 
-            var showMoreLessBtnHtml = '<div class="magmodules-messagebird-show-more-actions"><a href="javascript:void(0)" class="magmodules-messagebird-show-btn-more">'
-                + $.mage.__('Show more.') + '</a>'
-                + '<a href="javascript:void(0)" class="magmodules-messagebird-show-btn-less">' + $.mage.__('Show less.') + '</a></div>';
+    if(comment.length) {
+        heading.append(showMoreLessBtnHtml);
 
-            $mmHeadingComment.each(function (i, el) {
-                var elStyles = getComputedStyle(el);
-                var $el = $(el);
-                var oldHtml = $el.html();
-                var ellipsesIndex = oldHtml.length;
-                var maxElHeight = parseInt(elStyles.lineHeight) * 2;
+        $(document).on('click', '.mm-ui-show-more-actions a', (e) => {
+            let button = $(e.target),
+                parent = button.closest('.value').find('.mm-ui-heading-comment');
 
-                if (maxElHeight < $el.outerHeight()) {
-
-                    while (maxElHeight < $el.outerHeight()) {
-                        $el.html(function (index, text) {
-                            var newText = text.replace(/\W*\s(\S)*$/, '');
-                            ellipsesIndex = newText.length;
-                            return newText;
-                        });
-                    }
-
-                    var visibleStr = oldHtml.substr(0, ellipsesIndex);
-                    var hiddenStr = oldHtml.substr(ellipsesIndex);
-
-                    $el.html('<span>' + visibleStr + '</span><span class="magmodules-messagebird-show-more-block">'
-                        + hiddenStr.replace('<br/>', '<div></div>')
-                        + '</span>' + showMoreLessBtnHtml);
-
-                }
-            });
+            if (parent.hasClass('show')) {
+                parent.removeClass('show');
+                button.text($t('More'));
+            } else {
+                parent.addClass('show');
+                button.text($t('Less'));
+            }
         });
 
-        /**
-         * Toggle show more btn event.
-         */
-        $(document).on('click', '.magmodules-messagebird-show-more-actions a', function() {
-            $(this).closest('.magmodules-messagebird-heading-comment').toggleClass('magmodules-messagebird-show-more-active');
+        $(document).ready(isShowMore);
+        window.addEventListener("resize", isShowMore);
+    }
+
+    function isShowMore() {
+        Array.from(comment).forEach((item) => {
+            const BTN = item.closest('td').querySelector('.mm-ui-show-more-actions');
+            item.scrollHeight <= 55 ? BTN.classList.add('hidden') : BTN.classList.remove('hidden');
         });
     }
 });

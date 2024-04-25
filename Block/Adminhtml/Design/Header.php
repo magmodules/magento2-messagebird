@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Magmodules\MessageBird\Block\Adminhtml\MessageBird;
+namespace Magmodules\MessageBird\Block\Adminhtml\Design;
 
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;

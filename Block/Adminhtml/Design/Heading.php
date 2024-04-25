@@ -5,7 +5,7 @@
  */
 declare(strict_types=1);
 
-namespace Magmodules\MessageBird\Block\Adminhtml\MessageBird;
+namespace Magmodules\MessageBird\Block\Adminhtml\Design;
 
 use Magento\Config\Block\System\Config\Form\Field;
 use Magento\Framework\Data\Form\Element\AbstractElement;
@@ -26,8 +26,8 @@ class Heading extends Field
         $html = '<tr id="row_' . $element->getHtmlId() . '">';
         $html .= '  <td class="label"></td>';
         $html .= '  <td class="value">';
-        $html .= '     <div class="magmodules-messagebird-heading-block">' . $element->getData('label') . '</div>';
-        $html .= '     <div class="magmodules-messagebird-heading-comment">' . $element->getData('comment') . '</div>';
+        $html .= '     <div class="mm-ui-heading-block">' . $element->getData('label') . '</div>';
+        $html .= '     <div class="mm-ui-heading-comment">' . $element->getData('comment') . '</div>';
         $html .= '  </td>';
         $html .= '  <td></td>';
         $html .= '</tr>';
