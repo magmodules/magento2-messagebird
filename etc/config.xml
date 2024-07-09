@@ -8,7 +8,7 @@
     <default>
         <magmodules_messagebird>
             <general>
-                <version>v1.1.0</version>
+                <version>v1.1.1</version>
             </general>
             <communication>
                 <order_message>We successfully received your order with ID #{{order_id}} and awaiting your payment.</order_message>

@@ -2,7 +2,7 @@
   "name": "magmodules/magento2-messagebird",
   "description": "MessageBird integration for Magento 2",
   "type": "magento2-module",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "require": {
       "magento/framework": ">=100.1.0",
       "messagebird/php-rest-api": ">=1.20",
