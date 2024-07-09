@@ -1,0 +1,17 @@
+{
+    "messagebird_log": {
+        "column": {
+            "entity_id": true,
+            "increment_id": true,
+            "firstname": true,
+            "lastname": true,
+            "email": true,
+            "status": true,
+            "type": true,
+            "created_at": true
+        },
+        "constraint": {
+            "PRIMARY": true
+        }
+    }
+}
