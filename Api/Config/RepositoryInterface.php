@@ -217,11 +217,11 @@ interface RepositoryInterface
      * @param int $storeId
      * @return bool
      */
-    public function isDebugEnabled(int $storeId = null): bool;
+    public function isDebugEnabled(?int $storeId = null): bool;
 
     /**
      * @param int $storeId
      * @return bool
      */
-    public function isMollieEnabled(int $storeId = null): bool;
+    public function isMollieEnabled(?int $storeId = null): bool;
 }

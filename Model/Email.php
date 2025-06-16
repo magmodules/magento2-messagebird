@@ -82,8 +82,8 @@ class Email extends MagentoAlertEmail
         Adapter $adapter,
         PrepareProductAlertData $prepareProductAlertData,
         CommunicationLogRepository $communicationLogRepository,
-        AbstractResource $resource = null,
-        AbstractDb $resourceCollection = null,
+        ?AbstractResource $resource = null,
+        ?AbstractDb $resourceCollection = null,
         array $data = []
     ) {
         $this->adapter = $adapter;

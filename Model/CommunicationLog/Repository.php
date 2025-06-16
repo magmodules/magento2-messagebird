@@ -64,7 +64,7 @@ class Repository implements RepositoryInterface
         ResourceModel $resourceModel,
         SearchResultsInterfaceFactory $searchResultsFactory,
         DataInterfaceFactory $dataFactory,
-        CollectionProcessorInterface $collectionProcessor = null
+        ?CollectionProcessorInterface $collectionProcessor = null
     ) {
         $this->collectionFactory = $collectionFactory;
         $this->resourceModel = $resourceModel;
