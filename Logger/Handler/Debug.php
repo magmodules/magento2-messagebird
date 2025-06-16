@@ -8,21 +8,16 @@ declare(strict_types=1);
 namespace Magmodules\MessageBird\Logger\Handler;
 
 use Monolog\Logger;
-use Magento\Framework\Logger\Handler\Base;
+use Monolog\Handler\StreamHandler;
 
-/**
- * Debug logger handler class
- */
-class Debug extends Base
+class Debug extends StreamHandler
 {
+    public const FILENAME = 'messagebird-debug.log';
+    public const LEVEL = Logger::DEBUG;
 
-    /**
-     * @var int
-     */
-    protected $loggerType = Logger::DEBUG;
-
-    /**
-     * @var string
-     */
-    protected $fileName = '/var/log/messagebird-debug.log';
+    public function __construct()
+    {
+        /** @phpstan-ignore constant.notFound */
+        parent::__construct(BP . '/var/log/' . self::FILENAME, self::LEVEL);
+    }
 }

@@ -318,7 +318,7 @@ class Repository implements RepositoryInterface
      *
      * @return bool
      */
-    private function isSetFlag(string $path, int $storeId = null, string $scope = null): bool
+    private function isSetFlag(string $path, ?int $storeId = null, ?string $scope = null): bool
     {
         if (empty($scope)) {
             $scope = ScopeInterface::SCOPE_STORE;
@@ -341,8 +341,8 @@ class Repository implements RepositoryInterface
      */
     private function getStoreValue(
         string $path,
-        int $storeId = null,
-        string $scope = null
+        ?int $storeId = null,
+        ?string $scope = null
     ): string {
         if (!$storeId) {
             $storeId = (int)$this->getStore()->getId();
@@ -354,7 +354,7 @@ class Repository implements RepositoryInterface
     /**
      * @inheritDoc
      */
-    public function isDebugEnabled(int $storeId = null): bool
+    public function isDebugEnabled(?int $storeId = null): bool
     {
         return $this->isSetFlag(self::DEBUG, $storeId);
     }
@@ -362,7 +362,7 @@ class Repository implements RepositoryInterface
     /**
      * @inheritDoc
      */
-    public function isMollieEnabled(int $storeId = null): bool
+    public function isMollieEnabled(?int $storeId = null): bool
     {
         return $this->isSetFlag(self::MOLLIE_STATUS, $storeId);
     }

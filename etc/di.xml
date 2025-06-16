@@ -6,25 +6,30 @@
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 		xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
 
-    <type name="Magmodules\MessageBird\Logger\Handler">
+    <virtualType name="MessageBirdDebugMonolog" type="Monolog\Logger">
         <arguments>
-            <argument name="filesystem" xsi:type="object">Magento\Framework\Filesystem\Driver\File</argument>
+            <argument name="name" xsi:type="string">MessageBirdDebug</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="debug" xsi:type="object">Magmodules\MessageBird\Logger\Handler\Debug</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="MessageBirdErrorMonolog" type="Monolog\Logger">
+        <arguments>
+            <argument name="name" xsi:type="string">MessageBirdError</argument>
+            <argument name="handlers" xsi:type="array">
+                <item name="error" xsi:type="object">Magmodules\MessageBird\Logger\Handler\Error</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Magmodules\MessageBird\Logger\DebugLogger">
+        <arguments>
+            <argument name="logger" xsi:type="object">MessageBirdDebugMonolog</argument>
         </arguments>
     </type>
     <type name="Magmodules\MessageBird\Logger\ErrorLogger">
         <arguments>
-            <argument name="name" xsi:type="string">MessageBirdError</argument>
-            <argument name="handlers" xsi:type="array">
-                <item name="system" xsi:type="object">Magmodules\MessageBird\Logger\Handler\Error</item>
-            </argument>
-        </arguments>
-    </type>
-    <type name="Magmodules\MessageBird\Logger\DebugLogger">
-        <arguments>
-            <argument name="name" xsi:type="string">MessageBirdDebug</argument>
-            <argument name="handlers" xsi:type="array">
-                <item name="system" xsi:type="object">Magmodules\MessageBird\Logger\Handler\Error</item>
-            </argument>
+            <argument name="logger" xsi:type="object">MessageBirdErrorMonolog</argument>
         </arguments>
     </type>
 
