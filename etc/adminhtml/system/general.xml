@@ -53,9 +53,10 @@ sending messages with Test Mode disabled uses your available credits.]]></commen
             <label>Sender Name</label>
             <config_path>magmodules_messagebird/general/sendername</config_path>
         </field>
-        <field id="originator" translate="label" type="text" sortOrder="15" showInDefault="1" showInWebsite="1"
+        <field id="originator" translate="label comment" type="text" sortOrder="15" showInDefault="1" showInWebsite="1"
                showInStore="1">
             <label>Phone Number</label>
+            <comment><![CDATA[Use international format, e.g. +31612345678]]></comment>
             <config_path>magmodules_messagebird/general/originator</config_path>
         </field>
         <field id="button" translate="label" type="button" sortOrder="20" showInDefault="1"
