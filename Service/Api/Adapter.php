@@ -114,7 +114,7 @@ class Adapter
         }
 
         $originator = $config['originator'];
-        $originator = preg_replace('/[^0-9.]+/', '', $originator);
+        $originator = preg_replace('/[^0-9+]+/', '', $originator);
         try {
             $numberProto = $phoneUtil->parse($originator, $countryCode);
             $originator = sprintf(
@@ -135,7 +135,7 @@ class Adapter
         }
         $this->message->originator = $originator;
         foreach ($config['recipients'] as &$recipient) {
-            $recipient = preg_replace('/[^0-9.]+/', '', $recipient);
+            $recipient = preg_replace('/[^0-9+]+/', '', $recipient);
             try {
                 $numberProto = $phoneUtil->parse($recipient, $countryCode);
                 $recipient = sprintf(
@@ -189,10 +189,10 @@ class Adapter
                 ];
             }
         }
-        $this->logRepository->addErrorLog('Request error', self::ERRORS['unknown']);
+        $this->logRepository->addErrorLog('Request error', $message);
         return [
             'success' => false,
-            'message' => self::ERRORS['unknown']
+            'message' => $message
         ];
     }
 }

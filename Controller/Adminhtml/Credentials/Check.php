@@ -88,6 +88,6 @@ class Check extends Action
             return $this->configProvider->getApiKey($storeId, $testMode);
         }
 
-        return $apiKey;
+        return (string)$apiKey;
     }
 }
