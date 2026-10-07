@@ -129,8 +129,7 @@ class Repository implements LogRepositoryInterface
             $numberOfLines = LogRepository::STREAM_DEFAULT_LIMIT;
             while ($pos >= 0 && $numberOfLines > 0) {
                 $this->file->fileSeek($stream, $pos);
-                // phpcs:ignore Magento2.Functions.DiscouragedFunction
-                $char = fgetc($stream);
+                $char = $this->file->fileRead($stream, 1);
                 if ($char === "\n") {
                     $numberOfLines--;
                 }
@@ -138,10 +137,16 @@ class Repository implements LogRepositoryInterface
             }
 
             $result = [];
-            // phpcs:ignore Magento2.Functions.DiscouragedFunction
-            while (!feof($stream) && $numberOfLines < LogRepository::STREAM_DEFAULT_LIMIT) {
-                // phpcs:ignore Magento2.Functions.DiscouragedFunction
-                if ($line = fgets($stream)) {
+            $lines = [];
+            if ($numberOfLines < LogRepository::STREAM_DEFAULT_LIMIT) {
+                $offset = $this->file->fileTell($stream);
+                $this->file->fileSeek($stream, 0, SEEK_END);
+                $length = $this->file->fileTell($stream) - $offset;
+                $this->file->fileSeek($stream, $offset);
+                $lines = $length > 0 ? explode("\n", $this->file->fileRead($stream, $length)) : [];
+            }
+            foreach ($lines as $line) {
+                if ($line !== '') {
                     $data = explode('] ', $line);
                     $date = ltrim(array_shift($data), '[');
                     $data = implode('] ', $data);

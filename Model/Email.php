@@ -3,6 +3,8 @@
  * Copyright © Magmodules.eu. All rights reserved.
  * See COPYING.txt for license details.
  */
+declare(strict_types=1);
+
 namespace Magmodules\MessageBird\Model;
 
 use Magento\Customer\Api\CustomerRepositoryInterface;
